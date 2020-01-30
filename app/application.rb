@@ -5,6 +5,7 @@ class Application
 
     if req.path.include?("/items/")
       item_name = req.path.split("/items/")
+      puts item_name
       if !!Item.find_by_name(item_name)
         returned_item = Item.find_by_name(item_name)
         resp.write "#{returned_item.price}"

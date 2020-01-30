@@ -3,7 +3,7 @@ class Application
     resp = Rack::Response.new
     req = Rack::Request.new(env)
 
-    if req.path=="/items/"
+    if req.path.include?("/items/")
       if !!Item.find_by(name: req.path.last)
         returned_item = Item.find_by(name: req.path.last)
         resp.write "#{returned_item.price}"

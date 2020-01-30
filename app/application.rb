@@ -4,7 +4,7 @@ class Application
     req = Rack::Request.new(env)
 
     if req.path.include?("/items/")
-      item_name = req.path.split("/items/")
+      item_name = req.path.split("/items/").chomp
       if !!has_item?(item_name)
         puts "RUN????"
         returned_item = has_item?(item_name)

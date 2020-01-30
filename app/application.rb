@@ -5,7 +5,7 @@ class Application
 
     if req.path.include?("/items/")
       item_name = req.path.split("/items/")
-      puts has_item?(item_name).class
+      puts @@items.class
       if !!has_item?(item_name)
         returned_item = has_item?(item_name)
         resp.write "#{returned_item.price}"

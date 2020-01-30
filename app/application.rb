@@ -3,8 +3,10 @@ class Application
     resp = Rack::Response.new
     req = Rack::Request.new(env)
 
-    if req.path=="/items"
-      resp.write "#{}"
+    if req.path=="/items/"
+      if !!Item.find_by(name: req.path.last)
+        returned_item = Item.find_by(name: req.path.last)
+        resp.write "#{Item.}"
     else
       resp.write "Route not found"
       resp.status = 404

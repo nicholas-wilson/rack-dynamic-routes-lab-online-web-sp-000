@@ -4,7 +4,8 @@ class Application
     req = Rack::Request.new(env)
 
     if req.path.include?("/items/")
-      if !!Item.find_by(name: req.path.last)
+      item_name = req.path.split("/items/")
+      if !!Item.find_by(name: req.path)
         returned_item = Item.find_by(name: req.path.last)
         resp.write "#{returned_item.price}"
       else

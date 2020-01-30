@@ -5,9 +5,8 @@ class Application
 
     if req.path.include?("/items/")
       item_name = req.path.split("/items/")
-      puts @@items
-      if !!Item.find_by_name(item_name)
-        returned_item = Item.find_by_name(item_name)
+      if !!has_item?(item_name)
+        returned_item = has_item?(item_name)
         resp.write "#{returned_item.price}"
       else
         resp.write "Item not found"
@@ -19,5 +18,13 @@ class Application
     end
 
     resp.finish
+  end
+
+  def has_item?(item_name)
+    @@items.each do |item|
+      if item.name == item_name
+        item
+      end
+    end
   end
 end

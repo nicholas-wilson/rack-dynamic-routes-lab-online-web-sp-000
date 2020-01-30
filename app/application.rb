@@ -5,8 +5,8 @@ class Application
 
     if req.path.include?("/items/")
       item_name = req.path.split("/items/")
-      if !!Item.find_by(name: req.path)
-        returned_item = Item.find_by(name: req.path.last)
+      if !!Item.find_by(name: item_name)
+        returned_item = Item.find_by(name: item_name)
         resp.write "#{returned_item.price}"
       else
         resp.write "Item not found"

@@ -21,10 +21,12 @@ class Application
   end
 
   def has_item?(item_name)
+    the_item = nil
     @@items.each do |item|
       if item.name == item_name
-        item
+        the_item = item
       end
     end
+    the_item
   end
 end

@@ -6,7 +6,6 @@ class Application
     if req.path.include?("/items/")
       item_name = req.path.split("/items/").last
       if !!has_item?(item_name)
-        puts "RUN????"
         returned_item = has_item?(item_name)
         resp.write "#{returned_item.price}"
       else
